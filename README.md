@@ -10,8 +10,19 @@ the world area. The development and promotion of this production line represents
 
 ### Goal
 
+Build a data pipeline that integrates environmental data, soil characteristics, and historical avocado yield production data. Perform data preprocessing, feature engineering, and model training to analyze the relationship between environmental factors, soil conditions, and avocado yield. This pipeline can provide insights to avocado growers and agricultural organizations to make informed decisions regarding cultivation practices, resource management, and yield optimization in relation to environmental and soil variables.
+
 ### Ojectives
 
+- Design and implement a Data pipeline using the ETL process
+- Design and implement a Data Warehouse using Apache Hive
+- Design and implement cleaning/transformation strategies using Apache Spark
+- Containerizing ETL pipeline with Docker
+- Build and train a Machine learning model
+- Deploy the machine learning model as a web server using FastApi and Docker
+- Build a Dashboard report with Power Bi
+
+*** In a fucture add objectives of add security layer to the ETL pipeline and unit test to the pipeline and the model web server code
 
 
 ## Data egineering part
