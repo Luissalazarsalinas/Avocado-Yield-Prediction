@@ -26,14 +26,28 @@ Build a data pipeline that integrates environmental data, soil characteristics, 
 
 
 ## Data egineering part
-### Data pipeline design 
-[I'm going to implememt an ETL process in this case]
-#### local 
-[isnert image]
-##### Big data tools
-#### Azure Cloud 
-[isnert image] 
-##### Big data tools
+### Data Pipeline Architecture 
+![Image](url)
+
+All applications were containerized into Docker containers.
+
+**Data sources :**
+
+
+**Ingestion Layer :**
+
+**Transform and Storage Layer :**
+
+**Data Catologing :**
+
+**Serving Layer :**
+
+
+**Orchestration Layer :**
+
+
+**Consumer :**
+
 
 ## Data Science part
 ### Data preparation
