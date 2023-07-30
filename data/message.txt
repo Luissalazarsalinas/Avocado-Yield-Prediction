@@ -1,0 +1,12 @@
+Folder structure :
+-- Raw Zone:
+  - Store data in orginal format 
+
+-- Cleaning Zone: [struture a format for storage the transformaitons]
+  - Denormalization data from relation database
+  - Cleaning data [normalize column and other data clening]
+
+- Curate Zone:
+  - joining the data
+  - partitions by date or crops 
+   
