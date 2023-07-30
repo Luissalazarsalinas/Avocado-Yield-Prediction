@@ -27,7 +27,7 @@ Build a data pipeline that integrates environmental data, soil characteristics, 
 
 ## Data egineering part
 ### Data Pipeline Architecture 
-![Image](url)
+![Image](https://github.com/Luissalazarsalinas/Avocado-Yield-Prediction/blob/master/images/Architecture.jpg)
 
 All applications were containerized into Docker containers.
 
