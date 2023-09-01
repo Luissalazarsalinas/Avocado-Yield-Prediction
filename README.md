@@ -1,7 +1,7 @@
-# Avocado Yield Prediction
+# Hass Avocado Yield Prediction
 [Space for badges](url)
 
-Data science and Data engineer End-to-End project to detect and anlyze avocaddo yield in Colombia.
+Data science and Data engineer End-to-End project to detect and analyzing hass avocado production yield in Colombia.
 
 ## Problem Statement
 ### Introduction
