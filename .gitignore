@@ -1,3 +1,5 @@
 avocado-project/
 message_error.txt
 .env
+test.py
+tmp/

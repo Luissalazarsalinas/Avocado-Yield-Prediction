@@ -1,39 +1,45 @@
-import os
 import time
 import wget
-from config.hadoop import create_folders, upload_data
+from config.hadoop import Hadoop
+from src.utils import urls
 
-# urls
-url_avocado = ""
-url_temperature = ""
-url_soil = ""
-url_precip1 = ""
-url_precip2 = ""
-url_precip3 = ""
-# out path
-out_path = "F:/Data_projects/Avocado_Project/Project/Avocado-Yield-Prediction/ingest/src/tmp"
-# Create a list of urls
-url_list = [url_avocado, url_temperature, url_soil, url_precip1, url_precip2, url_precip3]
+
+# Output path
+out_path = "D:/Data_projects/Avocado_Project/Project/Avocado-Yield-Prediction/ingest/src/tmp"
 
 # download data
-for url in url_list:
+for url in urls:
     data = wget.download(url=url, out= out_path)
-    time.sleep(60) # wait a minute before download the next file
+    time.sleep(20) # wait 20 seconds before download the next file
 
-# Create the folders
-create_folders
+############################ CREATE FOLDERS AND UPLOAD DATA INTO HDFS  #####################################
 
-# upload data into hdfs
-avocado_data = "/"
-temp_data = "/"
-soil_data = "/"
-url_precip1 = "/"
-url_precip2 = "/"
-url_precip3 = "/"
+# Instance
+hadoop = Hadoop()
+
+# Create folder
+row_path = "row/Colombia"
+##
+hadoop.make_folder(path=row_path)
+
+# files name
+avocado_data = "/Evaluaciones_Agropecuarias_Municipales_EVA.csv"
+temp_data = "/Datos_Hidrometeorol_gicos_Crudos_-_Red_de_Estaciones_IDEAM___Temperatura.csv"
+soil_data = "/Resultados_de_An_lisis_de_Laboratorio_Suelos_en_Colombia.csv"
+url_precip = "/Precipitaci_n.csv"
+url_precip1 = "/Precipitaci_n (1).csv"
+url_precip2 = "/Precipitaci_n (2).csv"
+url_precip3 = "/Precipitaci_n (3).csv"
+url_precip4 = "/Precipitaci_n (4).csv"
+url_precip5 = "/Precipitaci_n (5).csv"
+url_precip6 = "/Precipitaci_n (6).csv"
+
 #List of files
-list_files = [avocado_data, temp_data, soil_data, url_precip1, url_precip2, url_precip3]
+list_files = [avocado_data, temp_data, soil_data, 
+              url_precip, url_precip2, url_precip3,
+              url_precip4, url_precip5, url_precip6]
 
 for file in list_files:
     out_path_file = out_path + file
-    upload_data(out_path_file)
+    hadoop.upload_data(out_path_file)
     time.sleep(30) # wait 30 second before upload the next file
