@@ -58,7 +58,7 @@ class AvocadoClean:
         (
             data.write
             .option("compression", "snappy")
-            .mode("append")
+            .mode("overwrite")
             .parquet(path)
         )
 

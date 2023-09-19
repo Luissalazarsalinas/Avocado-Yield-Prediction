@@ -9,10 +9,10 @@ def join_df(
         soil_df:spark.createDataFrame)->spark.createDataFrame:
     
     # join 1
-    df = avc_df.join(temp_df.select(F.col(), F.col()), "Municipio", "inner")
+    df = avc_df.join(temp_df.select(F.col("Municipio"), F.col("annual_avg_temp")), "Municipio", "inner")
 
     # join 2
-    df1 = df.join(prec_df.select(F.col(), F.col()), "Municipio", "inner")
+    df1 = df.join(prec_df.select(F.col("Municipio"), F.col("annual_avg_preci_mm")), "Municipio", "inner")
 
     # join 3
     df2 = df1.join(soil_df.select(F.col("Topografia"), 
@@ -44,6 +44,6 @@ def save(df:spark.createDataFrame, path:str)->spark.createDataFrame:
             F.col("year"),
             F.col("periodo")
         )
-        .mode("append")
+        .mode("overwrite")
         .save(path)
     )

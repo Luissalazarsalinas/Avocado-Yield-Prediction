@@ -24,7 +24,7 @@ class PrecipClean:
         )
         return df
 
-    def clean_data_temp(self,data:spark.createDataFrame) ->spark.createDataFrame:
+    def clean_data(self,data:spark.createDataFrame) ->spark.createDataFrame:
 
         df = (
             data
@@ -41,7 +41,8 @@ class PrecipClean:
          data2:spark.createDataFrame,
          data3:spark.createDataFrame,
          data4:spark.createDataFrame,
-         data5:spark.createDataFrame) ->spark.createDataFrame:
+         data5:spark.createDataFrame,
+         data6:spark.createDataFrame) ->spark.createDataFrame:
         
         df_union = (
             data
@@ -50,6 +51,7 @@ class PrecipClean:
             .union(data3)
             .union(data4)
             .union(data5)
+            .union(data6)
         )
 
         return df_union
@@ -71,6 +73,6 @@ class PrecipClean:
         (
             data.write
             .option("compression", "snappy")
-            .mode("append")
+            .mode("overwrite")
             .parquet(path)
         )

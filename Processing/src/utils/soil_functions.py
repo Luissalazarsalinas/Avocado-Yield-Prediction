@@ -125,6 +125,6 @@ class SoilClean:
         (
             data.write
             .option("compression", "snappy")
-            .mode("append")
+            .mode("overwrite")
             .parquet(path)
         )

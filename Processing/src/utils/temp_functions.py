@@ -39,18 +39,12 @@ class TempClean:
     def union(self,
          data:spark.createDataFrame,
          data1:spark.createDataFrame,
-         data2:spark.createDataFrame,
-         data3:spark.createDataFrame,
-         data4:spark.createDataFrame,
-         data5:spark.createDataFrame) ->spark.createDataFrame:
+         data2:spark.createDataFrame) ->spark.createDataFrame:
         
         df_union = (
             data
             .union(data1)
             .union(data2)
-            .union(data3)
-            .union(data4)
-            .union(data5)
         )
 
         return df_union
@@ -72,6 +66,6 @@ class TempClean:
         (
             data.write
             .option("compression", "snappy")
-            .mode("append")
+            .mode("overwrite")
             .parquet(path)
         )
