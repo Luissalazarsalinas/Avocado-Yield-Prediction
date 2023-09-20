@@ -1,11 +1,14 @@
 import time
 import wget
 from config.hadoop import Hadoop
-from src.utils import urls
+from Utils.utils import urls
+from Utils.utils import avocado_data,soil_data,list_temp,list_prec
+from pathlib import Path
 
 
 # Output path
-out_path = "D:/Data_projects/Avocado_Project/Project/Avocado-Yield-Prediction/ingest/src/tmp"
+BASE_PATH = Path(__file__).resolve(strict=True).parent.as_posix()
+out_path = f"{BASE_PATH}/tmp"
 
 # download data
 for url in urls:
@@ -18,28 +21,30 @@ for url in urls:
 hadoop = Hadoop()
 
 # Create folder
-row_path = "row/Colombia"
+raw_yield_path = "raw/Colombia/crops/yield/"
+raw_env_path = "raw/Colombia/crops/env/"
+raw_soil_path = "raw/Colombia/crops/soil/"
 ##
-hadoop.make_folder(path=row_path)
+hadoop.make_folder(path=raw_yield_path, 
+                   path_evn=raw_env_path,
+                   path_soil=raw_soil_path)
 
-# files name
-avocado_data = "/Evaluaciones_Agropecuarias_Municipales_EVA.csv"
-temp_data = "/Datos_Hidrometeorol_gicos_Crudos_-_Red_de_Estaciones_IDEAM___Temperatura.csv"
-soil_data = "/Resultados_de_An_lisis_de_Laboratorio_Suelos_en_Colombia.csv"
-url_precip = "/Precipitaci_n.csv"
-url_precip1 = "/Precipitaci_n (1).csv"
-url_precip2 = "/Precipitaci_n (2).csv"
-url_precip3 = "/Precipitaci_n (3).csv"
-url_precip4 = "/Precipitaci_n (4).csv"
-url_precip5 = "/Precipitaci_n (5).csv"
-url_precip6 = "/Precipitaci_n (6).csv"
+# upload avocado yield data
+av_out_path_f = out_path + str(avocado_data)
+hadoop.upload_data(raw_yield_path, av_out_path_f)
 
-#List of files
-list_files = [avocado_data, temp_data, soil_data, 
-              url_precip, url_precip2, url_precip3,
-              url_precip4, url_precip5, url_precip6]
+# upload soil data
+s_out_path_f = out_path + str(soil_data)
+hadoop.upload_data(raw_soil_path, s_out_path_f)
 
-for file in list_files:
+# upload temp data
+for file in list_temp:
     out_path_file = out_path + file
-    hadoop.upload_data(out_path_file)
+    hadoop.upload_data(raw_env_path,out_path_file)
+    time.sleep(30) # wait 30 second before upload the next file
+
+# upload temp data
+for file in list_prec:
+    out_path_file_pre = out_path + file
+    hadoop.upload_data(raw_env_path,out_path_file_pre)
     time.sleep(30) # wait 30 second before upload the next file
