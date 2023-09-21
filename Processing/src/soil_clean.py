@@ -1,9 +1,10 @@
+from datetime import date
 from config.sparkconfig import spark
 from utils.soil_functions import SoilClean
 from utils.schemas import schema_s
 
 ## read data and create a dataframe 
-path = ""
+path = "hdfs://localhost:9000/raw/Colombia/crops/soil/" + str(date.day()) + "/Resultados_de_An_lisis_de_Laboratorio_Suelos_en_Colombia.csv"
 df = (
     spark.read
     .option("header", "true")
@@ -28,5 +29,5 @@ df_f = soil_clean.filter_rows(df_r)
 df_c = soil_clean.clean_data(df_f)
 
 # save the data in parquet format
-path_out = ""
+path_out = "hdfs://localhost:9000/"
 soil_clean.save(df_c,path_out)

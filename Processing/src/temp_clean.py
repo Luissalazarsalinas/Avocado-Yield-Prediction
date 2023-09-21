@@ -1,11 +1,12 @@
+from datetime import date
 from config.sparkconfig import spark
 from utils.temp_functions import TempClean
 from utils.schemas import schema_p_t
 
 # path of files
-path = ""
-path1 = ""
-path2 = ""
+path = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Datos_Hidrometeorol_gicos_Crudos_-_Red_de_Estaciones_IDEAM___Temperatura.csv"
+path1 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Datos_Hidrometeorol_gicos_Crudos_-_Red_de_Estaciones_IDEAM___Temperatura (1).csv"
+path2 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Datos_Hidrometeorol_gicos_Crudos_-_Red_de_Estaciones_IDEAM___Temperatura (2).csv"
 
 # read data
 df = (

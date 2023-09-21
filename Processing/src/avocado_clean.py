@@ -1,10 +1,11 @@
 
+import datetime
 from config.sparkconfig import spark
 from utils.avocado_functions import AvocadoClean
 from utils.schemas import schema_avocado
 
 ## read data and create a dataframe 
-path = ""
+path = "hdfs://localhost:9000/raw/Colombia/crops/yield/" + str(datetime.date.day()) + "/Evaluaciones_Agropecuarias_Municipales_EVA.csv"
 df = (
     spark.read
     .option("header", "true")

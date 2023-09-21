@@ -1,15 +1,16 @@
+from datetime import date
 from config.sparkconfig import spark
 from utils.prec_functions import PrecipClean
 from utils.schemas import schema_p_t
 
 # path of files
-path = ""
-path1 = ""
-path2 = ""
-path3 = ""
-path4 = ""
-path5 = ""
-path6 = ""
+path = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n.csv"
+path1 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (1).csv"
+path2 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (2).csv"
+path3 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (3).csv"
+path4 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (4).csv"
+path5 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (5).csv"
+path6 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.day()) + "/Precipitaci_n (6).csv"
 
 # read data
 df = (
@@ -113,5 +114,5 @@ df_u = prec_clean.union(
 df_a = prec_clean.aggregation(df_u)
 
 ## save in a parquet format
-path_out = ""
+path_out = "hdfs://localhost:9000/"
 prec_clean.save(df_a, path_out)
