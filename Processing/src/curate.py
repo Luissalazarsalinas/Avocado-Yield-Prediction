@@ -40,3 +40,5 @@ df_j = join_df(
 # partititons and save data in delta format
 path_out = ""
 save(df_j, path_out)
+
+spark.stop()
