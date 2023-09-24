@@ -2,3 +2,4 @@ batch-project/
 message_error.txt
 test.py
 tmp/
+.env

@@ -9,11 +9,11 @@ df = (
     .load("add path from curate zone/cultivo='agucate'")
 )
 
-post_url = f"jdbc:postgresql://{settings}:{settings}/{settings}"
+post_url = f"jdbc:postgresql://{settings.db_hostname}:{settings.db_port}/{settings.db_name}"
 
 properties = {
-    "user":f"{settings}",
-    "password":f"{settings}",
+    "user":f"{settings.db_username}",
+    "password":f"{settings.db_password}",
     "driver":"org.postgresql.Driver"
 }
 
