@@ -1,7 +1,10 @@
-import os
 import findspark 
+from pathlib import Path 
 from pyspark.sql import SparkSession
 from delta import *
+
+# Base path
+BASE_PATH = Path(__file__).resolve(strict=True).parent.as_posix()
 
 # inti findspark
 findspark.init("F:\Spark\spark")
@@ -18,6 +21,7 @@ try:
             .config("spark.io.compression.lz4.blockSize", "512MB") # increase to 512mb to decreasse the size of the shuffle file by increasing the compressed size of the block
             .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") # config delta table into spark
             .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+            .config("spark.jars", f"{BASE_PATH}/postgresql-42.6.0.jar") # config connection with postgrestSQL - JDBC
             .appName("Data-Cleaning-and-Transformation")   
             .master("local[*]") 
 
