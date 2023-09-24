@@ -1,10 +1,15 @@
 from airflow import DAG 
+from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from processing.src import curate
-from processing.src import avocado_clean, prec_clean, temp_clean, soil_clean
-from load_data.src import Ml_data, load_datawarehouse
+from ingest.src.ingest_data import ingest
+from processing.src.curate import cuarate_data
+from processing.src.avocado_clean import clean_avacado_data
+from processing.src.temp_clean import clean_temp_data
+from processing.src.prec_clean import clean_precipitation_data
+from processing.src.soil_clean import clean_soil_data
+from load_data.src.Ml_data import ml_data
+from load_data.src.load_datawarehouse import load_datawarehouse
 
-## Next task 
-## configure the connection between spark and potsgrest
-## Create funtion into all modules for processing and load 
+# default dag arguments
+defaul_arg = ...

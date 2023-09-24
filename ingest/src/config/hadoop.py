@@ -19,7 +19,9 @@ class Hadoop:
              print(f"Fail Connection : {e}")
             
                 
-    def make_folder(self, path:str, path_evn:str, path_soil:str):
+    def make_folder(self, path:str, 
+                    path_evn:str, path_soil:str,
+                    path_clean:str, path_curate:str):
 
         # Connection to HDFS
         self.__connection()
@@ -28,6 +30,8 @@ class Hadoop:
         self.full_yield_path = path + str(datetime.date.today())
         self.full_env_path = path_evn + str(datetime.date.today())
         self.full_soil_path = path_soil + str(datetime.date.today())
+        self.full_clean_path = path_clean + str(datetime.date.today())
+        self.full_curate_path = path_curate 
 
         try:
 
@@ -35,19 +39,27 @@ class Hadoop:
             folder_yield_exist = self.hdfs_client.status(self.full_yield_path, strict=False)
             folder_env_exist = self.hdfs_client.status(self.full_env_path, strict=False)
             folder_soil_exist = self.hdfs_client.status(self.full_soil_path, strict=False)
+            folder_clean_exist = self.hdfs_client.status(self.full_clean_path, strict=False)
+            folder_curate_exist = self.hdfs_client.status(self.full_curate_path, strict=False)
 
             if folder_yield_exist is not None:
                 # Delete folder and files
-                self.hdfs_client.delete(folder_yield_exist, recursive=True)
+                self.hdfs_client.delete(self.full_yield_path, recursive=True)
             elif folder_env_exist is not None:
-                self.hdfs_client.delete(folder_env_exist, recursive=True)
+                self.hdfs_client.delete(self.full_env_path, recursive=True)
             elif folder_soil_exist is not None:
-                self.hdfs_client.delete(folder_soil_exist, recursive=True)
+                self.hdfs_client.delete(self.full_soil_path, recursive=True)
+            elif folder_clean_exist is not None:
+                self.hdfs_client.delete(self.full_clean_path, recursive=True)
+            elif folder_curate_exist is not None:
+                self.hdfs_client.delete(self.full_curate_path, recursive=True)
             else:
                 #Create folder
-                self.hdfs_client.makedirs(folder_yield_exist)
-                self.hdfs_client.makedirs(folder_env_exist)
-                self.hdfs_client.makedirs(folder_soil_exist)
+                self.hdfs_client.makedirs(self.full_yield_path)
+                self.hdfs_client.makedirs(self.full_env_path)
+                self.hdfs_client.makedirs(self.full_soil_path)
+                self.hdfs_client.makedirs(self.full_clean_path)
+                self.hdfs_client.makedirs(self.full_curate_path)
 
         except Exception as e:
             print(f"Fail folders creation: {e}")
