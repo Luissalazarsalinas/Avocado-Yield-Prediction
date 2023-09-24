@@ -1,7 +1,7 @@
 # Hass Avocado Yield Prediction
 [Space for badges](url)
 
-Data science and Data engineer End-to-End project to detect and analyzing hass avocado production yield in Colombia.
+Data Science and Data Engineer Freelarncer Project.
 
 ## Problem Statement
 ### Introduction
