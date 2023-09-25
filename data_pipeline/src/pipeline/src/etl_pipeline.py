@@ -38,14 +38,14 @@ with DAG(
 
 ) as dag:
     
-    ## Task - start hadoop hdfs
-    if os.path.exists():
-        hadoop = BashOperator(
-            task_id = "Start Hadoop HDFS",
-            bash_command= "path where is the shell script file"
-            ) 
-    else :
-        raise Exception(f"Cannot Locate {dag} file")
+    # ## Task - start hadoop hdfs
+    # if os.path.exists():
+    #     hadoop = BashOperator(
+    #         task_id = "Start Hadoop HDFS",
+    #         bash_command= "path where is the shell script file"
+    #         ) 
+    # else :
+    #     raise Exception(f"Cannot Locate {dag} file")
     
 
     ## Task - Cleaning data
@@ -98,4 +98,4 @@ with DAG(
 
 
     # Dependecies
-    hadoop >> ingest_data >> [avocado_clean,temp_clean, prec_clean, soil_clean] >> cur_data >> [load_dwh, Ml_data]
+    ingest_data >> [avocado_clean,temp_clean, prec_clean, soil_clean] >> cur_data >> [load_dwh, Ml_data]
