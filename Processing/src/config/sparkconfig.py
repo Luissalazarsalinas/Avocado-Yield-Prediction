@@ -7,7 +7,7 @@ from delta import *
 BASE_PATH = Path(__file__).resolve(strict=True).parent.as_posix()
 
 # inti findspark
-findspark.init("F:\Spark\spark")
+findspark.init("D:\Spark\spark")
 
 # Spark Seccion config 
 try:

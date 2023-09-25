@@ -70,5 +70,10 @@ schema_s = StructType(
         StructField("Manganeso (Mn) disponible Olsen mg/kg", StringType(),False),
         StructField("Zinc (Zn) disponible Olsen mg/kg", StringType(),False),
         StructField("Boro (B) disponible mg/kg", StringType(),False),
+        StructField("Hierro (Fe) disponible doble  cido mg/kg", StringType(),False),
+        StructField("Cobre (Cu) disponible doble acido mg/kg", StringType(),False),
+        StructField("Manganeso (Mn) disponible doble acido mg/kg", StringType(),False),
+        StructField("Zinc (Zn) disponible doble  cido mg/kg", StringType(),False),
+        StructField("Secuencial", StringType(),False),
     ]
 )
