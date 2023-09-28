@@ -29,7 +29,7 @@ def ingest():
     # Clean zone 
     clean_path = "clean/Colombia/crops/"
     # Curate zone 
-    curate_path = "curate/Colombia/crops"
+    curate_path = "curate/Colombia/crops/"
 
     ##
     hadoop.make_folder(path=raw_yield_path, 

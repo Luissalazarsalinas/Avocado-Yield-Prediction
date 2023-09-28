@@ -109,12 +109,12 @@ def clean_precipitation_data():
     # union the dataframes
     df_u = prec_clean.union(
         df_c, df_c1, df_c2,
-        df_c3,df_c4,df5, df_c6
+        df_c3,df_c4,df_c5, df_c6
     )
 
     ## compute the annual temp by departamento and municipio
     df_a = prec_clean.aggregation(df_u)
 
     ## save in a parquet format
-    path_out = "hdfs://localhost:9000/"
+    path_out = "hdfs://localhost:9000/clean/Colombia/crops/"+ str(date.day()) + "/prec_clean.parquet"
     prec_clean.save(df_a, path_out)

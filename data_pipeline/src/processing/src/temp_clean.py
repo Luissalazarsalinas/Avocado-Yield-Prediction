@@ -62,5 +62,5 @@ def clean_temp_data():
     df_a = temp_clean.aggregation(df_u)
 
     ## save in a parquet format
-    path_out = ""
+    path_out = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.day()) + "/temp_clean.parquet"
     temp_clean.save(df_a, path_out)

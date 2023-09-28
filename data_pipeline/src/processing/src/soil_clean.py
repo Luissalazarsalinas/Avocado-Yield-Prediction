@@ -30,5 +30,5 @@ def clean_soil_data():
     df_c = soil_clean.clean_data(df_f)
 
     # save the data in parquet format
-    path_out = "hdfs://localhost:9000/"
+    path_out = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.day()) + "/soil_clean.parquet"
     soil_clean.save(df_c,path_out)
