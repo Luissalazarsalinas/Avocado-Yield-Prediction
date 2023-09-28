@@ -3,10 +3,11 @@ from processing.src.config.sparkconfig import spark
 
 def load_datawarehouse():
     ## Read delta lake tables
+    path = "hdfs://localhost:9000/curate/Colombia/crops/"
     df = (
         spark.read
         .format("delta")
-        .load("add path from curate zone/cultivo='agucate'")
+        .load(path)
     )
 
     post_url = f"jdbc:postgresql://{settings.db_hostname}:{settings.db_port}/{settings.db_name}"

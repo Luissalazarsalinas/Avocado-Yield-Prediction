@@ -7,10 +7,11 @@ def ml_data():
     BASE_PATH = Path(__file__).resolve(strict=True).parent.as_posix()
 
     ## Read delta lake tables 
+    ## get only the data for avocado crop
     df = (
         spark.read
         .format("delta")
-        .load("add path from curate zone/cultivo='agucate'")
+        .load("hdfs://localhost:9000/curate/Colombia/crops/cultivo='agucate'")
     )
 
 
