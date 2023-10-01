@@ -4,4 +4,7 @@ b_pipeline-project/
 message_error.txt
 test.py
 tmp/
+airflow.cfg
+airflow.db
+docker-compose.yaml
 .env
