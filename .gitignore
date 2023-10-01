@@ -7,4 +7,8 @@ tmp/
 airflow.cfg
 airflow.db
 docker-compose.yaml
+dags/
+logs/
+config/
+plugins/
 .env
