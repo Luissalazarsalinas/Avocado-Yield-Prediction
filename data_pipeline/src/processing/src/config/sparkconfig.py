@@ -7,7 +7,7 @@ from delta import *
 BASE_PATH = Path(__file__).resolve(strict=True).parent
 
 # inti findspark
-findspark.init("F:\Spark\spark")
+findspark.init("D:\Spark\spark")
 
 # Spark Seccion config 
 try:
@@ -15,8 +15,8 @@ try:
         SparkSession.builder 
             .config("spark.sql.shuffle.partitions", "4") # partitions = 4
             .config("spark.executor.memory", "4g") # the executor memory is of 4 gb
-            #.config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") # config delta table into spark
-            #.config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") # config delta table into spark
+            .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
             .config("spark.jars", f"{BASE_PATH}\postgresql-42.6.0.jar") # config connection with postgrestSQL - JDBC
             .appName("Data-Cleaning-and-Transformation")   
             #.master("local[*]") 

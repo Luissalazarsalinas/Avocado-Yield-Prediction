@@ -57,3 +57,9 @@ def ingest():
         out_path_file_pre = out_path + file
         hadoop.upload_data(raw_env_path,out_path_file_pre)
         time.sleep(30) # wait 30 second before upload the next file
+
+
+## call fuction
+if __name__=="__main__":
+
+    ingest()

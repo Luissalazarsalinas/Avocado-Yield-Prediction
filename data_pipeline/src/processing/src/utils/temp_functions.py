@@ -31,7 +31,7 @@ class TempClean:
             .dropDuplicates()
             .dropna()
             .filter(~((data["Temp_gC"] == 0))) # Drop columns with precipitations values == to zero
-            .orderby(F.col("Municipio").asc())
+            .orderBy(F.col("Municipio").asc())
         )
 
         return df

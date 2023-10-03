@@ -63,7 +63,7 @@ class PrecipClean:
             .groupBy("Departamento","Municipio", "Mes", "year")
             .avg("precipitaciones_mm")
             .withColumnRenamed("avg(precipitaciones_mm)", "annual_avg_preci_mm")
-            .orderby(F.col("Municipio").asc())
+            .orderBy(F.col("Municipio").asc())
             )
         
         return df

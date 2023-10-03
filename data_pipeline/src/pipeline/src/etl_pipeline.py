@@ -12,11 +12,13 @@ from processing.src.soil_clean import clean_soil_data
 from load_data.src.Ml_data import ml_data
 from load_data.src.load_datawarehouse import load_datawarehouse
 
-# default dag arguments
+# summit a dag cp my_first_dag.py $AIRFLOW_HOME/dags
+# dag list airflow dags list
+# default dag arguments 
 defaul_arg = {
     "owner": "Data Engineering Team",
     #"dependes_on_past":False,
-    "start_date": datetime(2023,9,26), # the pipeline star run in this data
+    "start_date": datetime(2023,10,2), # the pipeline star run in this data
     #"email": [""], #
     "email_on_failure":True,  # send email if exist fails 
     "email_on_retry":True,    # send email to retry
@@ -32,7 +34,7 @@ defaul_arg = {
 with DAG(
     dag_id="dag_avocado_elt_pipeline",
     default_args= defaul_arg,
-    schedule_interval= "30 8 * * tue", # the pipeline run the November 26th-tuesday of 2023 at 8:30 am
+    schedule_interval= "30 10 * * mon", # the pipeline run the November 26th-tuesday of 2023 at 8:30 am
     catchup= True
 
 

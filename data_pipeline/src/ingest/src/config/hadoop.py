@@ -1,10 +1,10 @@
 import datetime
 from hdfs import InsecureClient
-from config.config import settings
+#from config.config import settings
 
 class Hadoop:
 
-    def __init__(self, url:str=settings.url, user:str=settings.user):
+    def __init__(self, url:str="http://localhost:9870", user:str="User"):
 
         self.__url = url
         self.__user = user

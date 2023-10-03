@@ -114,7 +114,7 @@ class SoilClean:
             data
             .dropDuplicates()
             .dropna()
-            .orderby(F.col("Municipio").asc())
+            .orderBy(F.col("Municipio").asc())
             )
         
         return df
