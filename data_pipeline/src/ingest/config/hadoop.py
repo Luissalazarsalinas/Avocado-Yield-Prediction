@@ -36,31 +36,22 @@ class Hadoop:
         try:
 
             # Check if the folders already exist
-            folder_yield_exist = self.hdfs_client.status(self.full_yield_path, strict=False)
-            folder_env_exist = self.hdfs_client.status(self.full_env_path, strict=False)
-            folder_soil_exist = self.hdfs_client.status(self.full_soil_path, strict=False)
-            folder_clean_exist = self.hdfs_client.status(self.full_clean_path, strict=False)
-            folder_curate_exist = self.hdfs_client.status(self.full_curate_path, strict=False)
+            list_folders = [
+                self.full_yield_path, self.full_env_path,
+                self.full_soil_path , self.full_clean_path,self.full_curate_path
+            ]
 
-            if folder_yield_exist is not None:
-                # Delete folder and files
-                self.hdfs_client.delete(self.full_yield_path, recursive=True)
-            elif folder_env_exist is not None:
-                self.hdfs_client.delete(self.full_env_path, recursive=True)
-            elif folder_soil_exist is not None:
-                self.hdfs_client.delete(self.full_soil_path, recursive=True)
-            elif folder_clean_exist is not None:
-                self.hdfs_client.delete(self.full_clean_path, recursive=True)
-            elif folder_curate_exist is not None:
-                self.hdfs_client.delete(self.full_curate_path, recursive=True)
-            else:
-                #Create folder
-                self.hdfs_client.makedirs(self.full_yield_path)
-                self.hdfs_client.makedirs(self.full_env_path)
-                self.hdfs_client.makedirs(self.full_soil_path)
-                self.hdfs_client.makedirs(self.full_clean_path)
-                self.hdfs_client.makedirs(self.full_curate_path)
+            # loop to check if the status of the folders
+            for file in list_folders:
+                folder_exist = self.hdfs_client.status(file, strict=False)
+                if folder_exist is not None:
+                    # Delete folder and files
+                    self.hdfs_client.delete(file, recursive=True)
 
+            # make folders
+            for folder in list_folders:
+                self.hdfs_client.makedirs(folder)
+            
         except Exception as e:
             print(f"Fail folders creation: {e}")
 

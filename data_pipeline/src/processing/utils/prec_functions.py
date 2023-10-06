@@ -12,8 +12,8 @@ class PrecipClean:
             .withColumnRenamed("CodigoSensor", "cod_sensor")
             .withColumnRenamed("ValorObservado", "precipitaciones_mm")
             .withColumn("FechaObservacion", F.to_date("FechaObservacion", "MM/dd/yyyy hh:mm:ss a"))
-            .withColumn("year_temp", F.year("FechaObservacion"))
-            .withColumn("Mes_temp", F.month("FechaObservacion"))
+            .withColumn("year_prec", F.year("FechaObservacion"))
+            .withColumn("Mes_prec", F.month("FechaObservacion"))
             .withColumn("Departamento", F.lower(F.col("Departamento")))
             .withColumn("Municipio", F.lower(F.col("Municipio")))
             .drop(F.col("FechaObservacion"))
@@ -60,7 +60,7 @@ class PrecipClean:
 
         df = (
             data
-            .groupBy("Departamento","Municipio", "Mes", "year")
+            .groupBy("Departamento","Municipio", "Mes_prec", "year_prec")
             .avg("precipitaciones_mm")
             .withColumnRenamed("avg(precipitaciones_mm)", "annual_avg_preci_mm")
             .orderBy(F.col("Municipio").asc())

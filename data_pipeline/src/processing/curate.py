@@ -6,10 +6,10 @@ from utils.trans_functions import join_df, save
 def cuarate_data():
     
     # paths 
-    path_av = "hdfs://localhost:9000/clean/Colombia/crops" + str(date.day()) + "/avocado_clean.parquet"
-    path_tp = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.day()) + "/temp_clean.parquet"
-    path_prec = "hdfs://localhost:9000/clean/Colombia/crops/"+ str(date.day()) + "/prec_clean.parquet"
-    path_soil = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.day()) + "/soil_clean.parquet"
+    path_av = "hdfs://localhost:9000/clean/Colombia/crops" + str(date.today()) + "/avocado_clean.parquet"
+    path_tp = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.today()) + "/temp_clean.parquet"
+    path_prec = "hdfs://localhost:9000/clean/Colombia/crops/"+ str(date.today()) + "/prec_clean.parquet"
+    path_soil = "hdfs://localhost:9000/clean/Colombia/crops/" + str(date.today()) + "/soil_clean.parquet"
 
     # read data
     df_av = (

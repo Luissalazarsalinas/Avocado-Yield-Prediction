@@ -53,10 +53,10 @@ class TempClean:
 
         df = (
             data
-            .groupBy("Departamento","Municipio", "Mes", "year")
+            .groupBy("Departamento","Municipio", "Mes_temp", "year_temp")
             .avg("Temp_gC")
             .withColumnRenamed("avg(Temp_gC)", "annual_avg_temp")
-            .orderby(F.col("Municipio").asc())
+            .orderBy(F.col("Municipio").asc())
             )
         
         return df

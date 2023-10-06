@@ -31,18 +31,16 @@ def join_df(
                                   F.col("cobre_cu_disponible_mg_kg"),
                                   F.col("manganeso_mn_disponible_olsen_mg_kg"),
                                   F.col("zinc_zn_disponible_olsen_mg_kg"),
-                                  F.col("boro_b_disponible_mg_kg")), "cultivo", "inner")
+                                  F.col("boro_b_disponible_mg_kg")), "Municipio", "inner")
     return df2
 
 def save(df:spark.createDataFrame, path:str)->spark.createDataFrame:
 
     (
         df.write
-        .format("delta")
+        .format("parquet")
         .partitionBy(
-            F.col("cultivo"),
-            F.col("year"),
-            F.col("periodo")
+            "cultivo"
         )
         .mode("overwrite")
         .save(path)

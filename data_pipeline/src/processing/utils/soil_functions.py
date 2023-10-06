@@ -7,8 +7,7 @@ class SoilClean:
 
         df = (
             data
-            .withColumnRenamed("Cultivo", "cultivo")
-            .withColumnRenamed("Fertilizantes aplicados", "Fertilizantes_aplicados")
+            #.withColumnRenamed("Cultivo", "cultivo")
             .withColumnRenamed("pH agua:suelo 2,5:1,0", "ph_agua_suelo_2_5_1_0")
             .withColumnRenamed("Materia orgánica (MO) %", "materia_org_nica_mo_porcent")
             .withColumnRenamed("Fósforo (P) Bray II mg/kg","f_sforo_p_bray_ii_mg_kg")
@@ -24,9 +23,9 @@ class SoilClean:
             .withColumnRenamed("Manganeso (Mn) disponible Olsen mg/kg", "manganeso_mn_disponible_olsen_mg_kg")
             .withColumnRenamed("Zinc (Zn) disponible Olsen mg/kg", "zinc_zn_disponible_olsen_mg_kg")
             .withColumnRenamed("Boro (B) disponible mg/kg", "boro_b_disponible_mg_kg")
-            .withColumn("Departamento", F.lower(F.col("Departamento")))
+            #.withColumn("Departamento", F.lower(F.col("Departamento")))
             .withColumn("Municipio", F.lower(F.col("Municipio")))
-            .withColumn("cultivo", F.lower(F.col("cultivo")))
+            #.withColumn("cultivo", F.lower(F.col("cultivo")))
             .withColumn("Topografia", F.lower(F.col("Topografia")))
             .withColumn("Drenaje", F.lower(F.col("Drenaje")))
         )
@@ -36,6 +35,8 @@ class SoilClean:
         df = (
             data
             .drop(F.col("numfila"))
+            .drop(F.col("Departamento"))
+            .drop(F.col("Cultivo"))
             .drop(F.col("Estado"))
             .drop(F.col("Tiempo Establecimiento"))
             .drop(F.col("Riego"))
