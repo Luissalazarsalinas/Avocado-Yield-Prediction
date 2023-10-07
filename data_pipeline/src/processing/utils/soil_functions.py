@@ -29,6 +29,7 @@ class SoilClean:
             .withColumn("Topografia", F.lower(F.col("Topografia")))
             .withColumn("Drenaje", F.lower(F.col("Drenaje")))
         )
+        return df
 
     def drop_columns(self, data:spark.createDataFrame) ->spark.createDataFrame:
 

@@ -6,13 +6,13 @@ from utils.schemas import schema_p_t
 
 def clean_precipitation_data():
     # path of files
-    path = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n.csv"
-    path1 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (1).csv"
-    path2 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (2).csv"
-    path3 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (3).csv"
-    path4 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (4).csv"
-    path5 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (5).csv"
-    path6 = "hdfs://localhost:9000/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (6).csv"
+    path = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n.csv"
+    path1 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (1).csv"
+    path2 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (2).csv"
+    path3 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (3).csv"
+    path4 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (4).csv"
+    path5 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (5).csv"
+    path6 = "hdfs://localhost:9000/user/User/raw/Colombia/crops/env/" + str(date.today()) + "/Precipitaci_n (6).csv"
 
     # read data
     df = (
@@ -116,5 +116,10 @@ def clean_precipitation_data():
     df_a = prec_clean.aggregation(df_u)
 
     ## save in a parquet format
-    path_out = "hdfs://localhost:9000/clean/Colombia/crops/"+ str(date.today()) + "/prec_clean.parquet"
+    path_out = "hdfs://localhost:9000/user/User/clean/Colombia/crops/"+ str(date.today()) + "/prec_clean.parquet"
     prec_clean.save(df_a, path_out)
+
+
+if __name__ == "__main__":
+    
+    clean_precipitation_data()

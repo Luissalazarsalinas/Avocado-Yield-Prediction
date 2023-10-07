@@ -22,10 +22,10 @@ def save(df:spark.createDataFrame, path:str)->spark.createDataFrame:
 
     (
         df.write
-        .format("parquet")
         .partitionBy(
             "cultivo"
         )
         .mode("overwrite")
+        .format("parquet")
         .save(path)
     )
