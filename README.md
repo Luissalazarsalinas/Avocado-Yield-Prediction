@@ -38,8 +38,6 @@ All applications were containerized into Docker containers.
 
 **Transform and Storage Layer :**
 
-**Data Catologing :**
-
 **Serving Layer :**
 
 
