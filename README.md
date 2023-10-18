@@ -57,7 +57,7 @@ Pipeline's architecture
           2.  Data Transformation: all data were joined using join operation with Apache spark.
           3. Partitioning: Data were partitioned by Crops to optimize the query performance.
 
-**Serving Layer :** 
+**Serving Layer :** a Apache Hive datawarehouse to stored relational data from curate zone.
 
 **Orchestration Layer :**
 
