@@ -26,18 +26,38 @@ Build a data pipeline that integrates environmental data, soil characteristics, 
 ## Data egineering part
 ### Data Pipeline Architecture 
 ![IMG](https://github.com/Luissalazarsalinas/Avocado-Yield-Prediction/blob/master/images/new_avocado_data_archicteture.png)
+Pipeline's architecture
 
-All applications were containerized into Docker containers.
+**Ingestion Layer :** a python application that download csv files from open soruce Natational databases and ingest them in raw zone of a data lake (HDFS).
 
-**Data sources :**
+**Transform and Storage Layer :** a spark application and data lake divide into three zones.
+    
+    - Raw zone: 
+       - Activities:
+          1. Data ingestion: CSV files were ingestion into the raw zone form Ingestion layer.
+          2. Data Storage: the raw data was stored as-is, preserving its original format.
 
+    - Cleaning zone:
+       - Activities:
+          1. Data ingestion: Data were retrieved from the raw zone using Apache Spark on Databricks
+          2. Data Cleaning: 
+              - Identify and remove: duplicated and missing values
+              - Filter and remove unwanted values
+              - replace row values 
+              - drop unnecesarie data
+          3. Data Transformations:
+              - Standarization: rename columns and standarized units
+              - Union different files with the same schema
+              - Agregations by location (Departamento and Municipio) and date (year)
+          4. Data Storage: the clean data were stored in parquet format for optimization and speed. 
 
-**Ingestion Layer :**
+    - Curate zone:
+       - Activities:
+          1. Data ingestion: Data were retrieved from the cleaning zone using Apache Spark on Databricks
+          2.  Data Transformation: all data were joined using join operation with Apache spark.
+          3. Partitioning: Data were partitioned by Crops to optimize the query performance.
 
-**Transform and Storage Layer :**
-
-**Serving Layer :**
-
+**Serving Layer :** 
 
 **Orchestration Layer :**
 
