@@ -17,13 +17,11 @@ Build a data pipeline that integrates environmental data, soil characteristics, 
 - Design and implement a Data pipeline using the ETL process
 - Design and implement a Data Warehouse using Apache Hive
 - Design and implement cleaning/transformation strategies using Apache Spark
-- Containerizing ETL pipeline with Docker
 - Build and train a Machine learning model
 - Deploy the machine learning model as a web server using FastApi and Docker
+- Build a Unit Test
+- Implement a CI/CD pipeline
 - Build a Dashboard report with Power Bi
-
-*** In a fucture add objectives of add security layer to the ETL pipeline and unit test to the pipeline and the model web server code
-
 
 ## Data egineering part
 ### Data Pipeline Architecture 
