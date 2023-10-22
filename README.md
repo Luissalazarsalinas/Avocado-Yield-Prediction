@@ -22,7 +22,7 @@ Build a data pipeline that integrates environmental data, soil characteristics, 
 - Implement a CI/CD pipeline
 - Build a Dashboard report with Power Bi
 
-## Data egineering part
+## Data engineering
 ### Data Pipeline Architecture 
 ![IMG](https://github.com/Luissalazarsalinas/Avocado-Yield-Prediction/blob/master/images/new_avocado_data_archicteture.png)
 Pipeline's architecture
@@ -64,7 +64,7 @@ Pipeline's architecture
 **Consumer :**
 
 
-## Data Science part
+## Data Science
 ### Data preparation
 [document all the process of preprocessing steps(cleaning, variables' transformation, feature engineering and feature selection)]
 
@@ -85,8 +85,4 @@ Pipeline's architecture
 - add security to the add [JWT]
 - connect the api with a PostgreSQL database to store login and prediction from the model
 - Add unit test and CI pipeline
-
-## Data analytics part
-[Create a dashboad that comsumed the data from the data pipeline using Power Bi]
-[add the image of the dashboard]
 
