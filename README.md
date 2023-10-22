@@ -1,5 +1,4 @@
 # Hass Avocado Yield Prediction
-[Space for badges](url)
 
 Data Science and Data Engineer Freelance Project.
 
