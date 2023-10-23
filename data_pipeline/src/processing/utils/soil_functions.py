@@ -1,4 +1,5 @@
 import pyspark.sql.functions as F
+from pyspark.sql.types import *
 from processing.config.sparkconfig import spark
 
 class SoilClean:
@@ -93,6 +94,26 @@ class SoilClean:
             .withColumn("manganeso_disponible_olsen_mg_kg", F.regexp_replace("manganeso_disponible_olsen_mg_kg", ",", "."))
             .withColumn("zinc_disponible_olsen_mg_kg", F.regexp_replace("zinc_disponible_olsen_mg_kg", ",", "."))
             .withColumn("boro_disponible_mg_kg", F.regexp_replace("boro_disponible_mg_kg", ",", "."))
+            
+            )
+        
+        df_n = (
+            df
+            .withColumn("ph_agua_suelo_2_5_1_0", F.col("ph_agua_suelo_2_5_1_0").cast(DecimalType(10,2)))
+            .withColumn("materia_orgnica_mo_porcent", F.col("materia_orgnica_mo_porcent").cast(DecimalType(10,2)))
+            .withColumn("fosforo_p_bray_ii_mg_kg", F.col("fosforo_p_bray_ii_mg_kg").cast(DecimalType(10,2)))
+            .withColumn("azufres_fosfato_monocalcico_mg_kg", F.col("azufres_fosfato_monocalcico_mg_kg").cast(DecimalType(10,2)))
+            .withColumn("calcio_intercambiable_cmol_kg", F.col("calcio_intercambiable_cmol_kg").cast(DecimalType(10,2)))
+            .withColumn("magnesio_mg_intercambiable_cmol_kg", F.col("magnesio_mg_intercambiable_cmol_kg").cast(DecimalType(10,2)))
+            .withColumn("potasio_intercambiable_cmol_kg", F.col("potasio_intercambiable_cmol_kg").cast(DecimalType(10,2)))
+            .withColumn("sodio_intercambiable_cmol_kg", F.col("sodio_intercambiable_cmol_kg").cast(DecimalType(10,2)))
+            .withColumn("capacidad_intercambio_cationico_suma_de_bases_cmol_kg", F.col("capacidad_intercambio_cationico_suma_de_bases_cmol_kg").cast(DecimalType(10,2)))
+            .withColumn("conductividad_elctrica_relacion_2_5_1_0_ds_m", F.col("conductividad_elctrica_relacion_2_5_1_0_ds_m").cast(DecimalType(10,2)))
+            .withColumn("hierro_disponible_olsen_mg_kg", F.col("hierro_disponible_olsen_mg_kg").cast(DecimalType(10,4)))
+            .withColumn("cobre_disponible_mg_kg", F.col("cobre_disponible_mg_kg").cast(DecimalType(10,4)))
+            .withColumn("manganeso_disponible_olsen_mg_kg", F.col("manganeso_disponible_olsen_mg_kg").cast(DecimalType(10,4)))
+            .withColumn("zinc_disponible_olsen_mg_kg", F.col("zinc_disponible_olsen_mg_kg").cast(DecimalType(10,4)))
+            .withColumn("boro_disponible_mg_kg", F.col("boro_disponible_mg_kg").cast(DecimalType(10,2)))
             
             )
         

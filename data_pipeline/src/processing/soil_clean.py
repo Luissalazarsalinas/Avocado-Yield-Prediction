@@ -5,7 +5,7 @@ from processing.utils.schemas import schema_s
 
 def clean_soil_data():
     ## read data and create a dataframe 
-    path = "hdfs://localhost:9000/user/User/raw/Colombia/crops/soil/" + str(date.today()) + "/Resultados_de_An_lisis_de_Laboratorio_Suelos_en_Colombia.csv"
+    path = "hdfs://localhost:9000/user/User/raw/Colombia/crops/soil/" + str(date.today()) + "/Resultados_de_An_lisis_de_Laboratorio_Suelos_en_Colombia.csv" 
     df = (
         spark.read
         .option("header", "true")
@@ -30,7 +30,7 @@ def clean_soil_data():
     df_c = soil_clean.clean_data(df_f)
 
     # save the data in parquet format
-    path_out = "hdfs://localhost:9000/user/User/clean/Colombia/crops/" + str(date.today()) + "/soil_clean.parquet"
+    path_out = "hdfs://localhost:9000/user/User/clean/Colombia/crops/" + str(date.today()) + "/soil_clean.parquet" 
     soil_clean.save(df_c,path_out)
 
 # if __name__ == "__main__":
