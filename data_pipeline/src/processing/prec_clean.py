@@ -1,7 +1,7 @@
 from datetime import date
-from config.sparkconfig import spark
-from utils.prec_functions import PrecipClean
-from utils.schemas import schema_p_t
+from processing.config.sparkconfig import spark
+from processing.utils.prec_functions import PrecipClean
+from processing.utils.schemas import schema_p_t
 
 
 def clean_precipitation_data():
@@ -120,6 +120,6 @@ def clean_precipitation_data():
     prec_clean.save(df_a, path_out)
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    clean_precipitation_data()
+#     clean_precipitation_data()

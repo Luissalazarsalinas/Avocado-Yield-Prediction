@@ -1,5 +1,5 @@
 import pyspark.sql.functions as F
-from config.sparkconfig import spark
+from processing.config.sparkconfig import spark
 
 ##
 class PrecipClean:

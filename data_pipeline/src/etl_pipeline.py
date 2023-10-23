@@ -3,14 +3,14 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from ingest.src.ingest_data import ingest
-from processing.src.curate import cuarate_data
-from processing.src.avocado_clean import clean_avacado_data
-from processing.src.temp_clean import clean_temp_data
-from processing.src.prec_clean import clean_precipitation_data
-from processing.src.soil_clean import clean_soil_data
-from load_data.src.Ml_data import ml_data
-from load_data.src.load_datawarehouse import load_datawarehouse
+from ingest.ingest_data import ingest
+from processing.curate import cuarate_data
+from processing.avocado_clean import clean_avacado_data
+from processing.temp_clean import clean_temp_data
+from processing.prec_clean import clean_precipitation_data
+from processing.soil_clean import clean_soil_data
+from load_data.Ml_data import ml_data
+from load_data.load_datawarehouse import load_datawarehouse
 
 # summit a dag cp my_first_dag.py $AIRFLOW_HOME/dags
 # dag list airflow dags list

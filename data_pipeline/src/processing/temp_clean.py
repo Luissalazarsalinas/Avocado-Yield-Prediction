@@ -1,7 +1,7 @@
 from datetime import date
-from config.sparkconfig import spark
-from utils.temp_functions import TempClean
-from utils.schemas import schema_p_t
+from processing.config.sparkconfig import spark
+from processing.utils.temp_functions import TempClean
+from processing.utils.schemas import schema_p_t
 
 
 def clean_temp_data():
@@ -66,6 +66,6 @@ def clean_temp_data():
     temp_clean.save(df_a, path_out)
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    clean_temp_data()
+#     clean_temp_data()

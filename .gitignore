@@ -11,3 +11,4 @@ dags/
 logs/
 plugins/
 .env
+__pycache__

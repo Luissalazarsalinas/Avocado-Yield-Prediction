@@ -1,7 +1,7 @@
 from datetime import date
-from config.sparkconfig import spark
-from utils.soil_functions import SoilClean
-from utils.schemas import schema_s
+from processing.config.sparkconfig import spark
+from processing.utils.soil_functions import SoilClean
+from processing.utils.schemas import schema_s
 
 def clean_soil_data():
     ## read data and create a dataframe 
@@ -33,6 +33,6 @@ def clean_soil_data():
     path_out = "hdfs://localhost:9000/user/User/clean/Colombia/crops/" + str(date.today()) + "/soil_clean.parquet"
     soil_clean.save(df_c,path_out)
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    clean_soil_data()
+#     clean_soil_data()

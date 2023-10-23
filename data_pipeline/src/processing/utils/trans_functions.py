@@ -1,5 +1,5 @@
 import pyspark.sql.functions as F
-from config.sparkconfig import spark
+from processing.config.sparkconfig import spark
 
 
 def join_df(
@@ -22,11 +22,11 @@ def save(df:spark.createDataFrame, path:str)->spark.createDataFrame:
 
     (
         df.write
-        #.partitionBy(
-        #    "cultivo"
-        #)
+        .partitionBy(
+           "cultivo"
+        )
         .mode("overwrite")
-        .parquet(path)
-        #.format("parquet")
-        #.save(path)
+        #.parquet(path)
+        .format("parquet")
+        .save(path)
     )

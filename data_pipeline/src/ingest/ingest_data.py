@@ -1,8 +1,8 @@
 import time
 import wget
-from config.hadoop import Hadoop
-from Utils.utils import urls
-from Utils.utils import avocado_data,soil_data,list_temp,list_prec
+from ingest.config.hadoop import Hadoop
+from ingest.Utils.utils import urls
+from ingest.Utils.utils import avocado_data,soil_data,list_temp,list_prec
 from pathlib import Path
 
 
